@@ -182,10 +182,24 @@ namespace Presentacion
                 cuadroCount++;
             }
 
-            // Guardar el PDF
-            string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string pdfPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"PedidosSemanal_{timestamp}.pdf");
 
+            // Obtener la ruta al escritorio
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            // Definir la ruta completa: Escritorio/pedidos/semanal
+            string folderPath = Path.Combine(desktopPath, "pedidos", "Semanal");
+
+            // Verificar si la carpeta existe; si no, crearla
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            // Generar el nombre del archivo con timestamp
+            string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string pdfPath = Path.Combine(folderPath, $"PedidosSemanal_{timestamp}.pdf");
+
+            // Renderizar y guardar el PDF
             PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(true)
             {
                 Document = document
@@ -193,7 +207,9 @@ namespace Presentacion
             pdfRenderer.RenderDocument();
             pdfRenderer.PdfDocument.Save(pdfPath);
 
-            MessageBox.Show("PDF generado exitosamente en el escritorio.");
+            MessageBox.Show("PDF generado exitosamente en la carpeta 'pedidos/Semanal' del escritorio.");
+
+
         }
 
 
@@ -269,7 +285,7 @@ namespace Presentacion
                 Cell cell = (cuadroCount % 2 == 0) ? tableRow.Cells[0] : tableRow.Cells[1];
 
                 // Configura el color de fondo y los bordes de las celdas
-                cell.Shading.Color = Colors.White; // Fondo blanco
+                cell.Shading.Color = Colors.White; 
                 cell.Borders.Width = 1; // bordes
 
                 Paragraph pedidoBox = cell.AddParagraph();
@@ -300,9 +316,29 @@ namespace Presentacion
                 cuadroCount++;
             }
 
-            // Guardar el PDF
+            // Obtener el tipo 
+
+            string tipo = registros.FirstOrDefault()?.Tipo ?? "Otro";
+
+
+            string subcarpeta = tipo == "Viaje" ? "Viaje" : tipo == "Semanal" ? "Semanal" : "otros";
+
+          
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            // Definir la ruta completa: Escritorio/pedidos/[tipo]
+            string folderPath = Path.Combine(desktopPath, "pedidos", subcarpeta);
+
+            // Verificar si la carpeta existe; si no, crearla
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            // Generar el nombre
             string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string pdfPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"Pedidos_{timestamp}.pdf");
+            string pdfPath = Path.Combine(folderPath, $"Pedidos_{timestamp}.pdf");
+
 
             PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(true)
             {
@@ -311,11 +347,10 @@ namespace Presentacion
             pdfRenderer.RenderDocument();
             pdfRenderer.PdfDocument.Save(pdfPath);
 
-           
-            MessageBox.Show("PDF generado exitosamente en el escritorio.");
+            MessageBox.Show($"PDF generado exitosamente en la carpeta 'pedidos/{subcarpeta}' del escritorio.");
+
 
         }
-
 
 
         public void GenerarPDFPorCategoria()
@@ -352,7 +387,6 @@ namespace Presentacion
                 GenerarPDF("Mesada", registrosMesada);
             }
 
-            MessageBox.Show("PDFs generados exitosamente en el escritorio.");
         }
 
         private void GenerarPDF(string categoria, List<Registro> registros)
@@ -416,16 +450,34 @@ namespace Presentacion
 
             }
 
+
+            // Obtener la ruta al escritorio
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            // Definir la ruta completa
+            string folderPath = Path.Combine(desktopPath, "pedidos", "Viaje");
+
+            // Verificar si la carpeta existe; si no, crearla
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            // Generar el nombre del archivo con timestamp
             string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
-            string pdfPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"{categoria}_Pedidos_{timestamp}.pdf");
+            string pdfPath = Path.Combine(folderPath, $"{categoria}_PedidosViaje_{timestamp}.pdf");
 
-
+            // Renderizar y guardar el PDF
             PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(true)
             {
                 Document = document
             };
             pdfRenderer.RenderDocument();
             pdfRenderer.PdfDocument.Save(pdfPath);
+
+            MessageBox.Show("PDF generado exitosamente en la carpeta 'pedidos/viaje' del escritorio.");
+
+
         }
 
 
