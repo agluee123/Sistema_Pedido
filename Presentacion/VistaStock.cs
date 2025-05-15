@@ -55,25 +55,48 @@ namespace Ilgabinetto
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Stock stockNuevo = new Stock();
             StockNegocio negocio = new StockNegocio();
             try
             {
-                Stock nuevo = new Stock();
-                nuevo.id = Convert.ToInt32(dgvStock.CurrentRow.Cells["id"].Value);
-                //MessageBox.Show(nuevo.id.ToString());
-                nuevo.nombre = tbxNombre.Text;
-                nuevo.cantidad = Convert.ToInt32(tbxCantidad.Text);
+                string nombre = tbxNombre.Text.Trim();
+                string textoCantidad = tbxStock.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(nombre))
+                {
+                    MessageBox.Show("Ingresá un nombre válido.");
+                    return;
+                }
+
+                if (!int.TryParse(textoCantidad, out int cantidad))
+                {
+                    MessageBox.Show("La cantidad ingresada no es un número válido.");
+                    return;
+                }
+
+                Stock nuevo = new Stock
+                {
+                    nombre = nombre,
+                    cantidad = cantidad
+                };
 
                 negocio.agregarOActualizarStock(nuevo);
-                CargarDatos(); // refresca
+                CargarDatos(); 
+                cargarProductos();
+                limpiarCampos();
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void limpiarCampos()
+        {
+            tbxNombre.Text = "";
+            tbxStock.Text = "";
+        }
+
+
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
@@ -146,28 +169,44 @@ namespace Ilgabinetto
                 EntregaStock entrega = new EntregaStock();
                 entrega.idStock = (int)cbxProducto.SelectedValue;
                 entrega.entregadoA = tbxEntregado.Text;
-                entrega.cantidadEntregada = int.Parse(tbxCantidad.Text);
+
+                if (!int.TryParse(tbxCantidad.Text, out int cantidadAEntregar) || cantidadAEntregar <= 0)
+                {
+                    MessageBox.Show("Ingresá una cantidad válida mayor que cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                entrega.cantidadEntregada = cantidadAEntregar;
                 entrega.fechaEntrega = dtpFechaEntrega.Value;
 
                 EntregaStockNegocio negocio = new EntregaStockNegocio();
-                negocio.registrarEntrega(entrega);
 
-                // Verificar el stock restante
-                int idStock = entrega.idStock;
-                int stockRestante = negocio.obtenerStockActual(idStock);
-                if (stockRestante <= 10) // umbral de advertencia
+                
+                int stockActual = negocio.obtenerStockActual(entrega.idStock);
+
+                if (cantidadAEntregar > stockActual)
                 {
-                    MessageBox.Show("⚠ Atención: Queda poco stock del producto seleccionado (" + stockRestante + " unidades).", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"No hay suficiente stock. Solo quedan {stockActual} unidades.", "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
 
-                //cargarGrilla();
-                CargarDatos(); // refrescar grilla de stock
+                negocio.registrarEntrega(entrega);
+
+                
+                int stockRestante = stockActual - cantidadAEntregar;
+                if (stockRestante <= 10)
+                {
+                    MessageBox.Show($"⚠ Atención: Queda poco stock del producto seleccionado ({stockRestante} unidades).", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                CargarDatos(); 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al registrar la entrega: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
+
     }
 }

@@ -11,48 +11,42 @@ namespace Negocio
 {
     public class StockNegocio
     {
-        //public void Agregar(Stock nuevo)
-        //{
-
-        //    AccesoDatos datos = new AccesoDatos();
-        //    datos.setearConsulta("insert into stock(nombre,cantidad) values (@nombre, @cantidad) ");
-        //    datos.setearParametro("@nombre", nuevo.nombre);
-        //    datos.setearParametro("@cantidad", nuevo.cantidad);
-
-        //    datos.ejecutarAccion();
-        //    datos.cerrarConexion();
-        //}
-
+        
+        
         public void agregarOActualizarStock(Stock stock)
         {
+           
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT Cantidad FROM Stock WHERE Id = @Id");
-                datos.setearParametro("@Id", stock.id);
+                datos.setearConsulta("SELECT Id, Cantidad FROM Stock WHERE Nombre = @Nombre");
+                datos.setearParametro("@Nombre", stock.nombre);
                 datos.ejecutarLectura();
-
-                int cantidadActual = 0;
 
                 if (datos.Lector.Read())
                 {
-                    cantidadActual = (int)datos.Lector["Cantidad"];
-                    datos.cerrarConexion();
-
+                    int id = (int)datos.Lector["Id"];
+                    int cantidadActual = (int)datos.Lector["Cantidad"];
                     int nuevaCantidad = cantidadActual + stock.cantidad;
 
-                    datos.setearConsulta("UPDATE Stock SET Cantidad = @Cantidad WHERE Id = @Id");
-                    datos.setearParametro("@Cantidad", nuevaCantidad);
-                    datos.setearParametro("@Id", stock.id);
-                    datos.ejecutarAccion();
+                    datos.cerrarConexion(); // cierro el actual
+
+                    // nueva instancia para evitar problemas de parámetros
+                    AccesoDatos datosUpdate = new AccesoDatos();
+                    datosUpdate.setearConsulta("UPDATE Stock SET Cantidad = @Cantidad WHERE Id = @Id");
+                    datosUpdate.setearParametro("@Cantidad", nuevaCantidad);
+                    datosUpdate.setearParametro("@Id", id);
+                    datosUpdate.ejecutarAccion();
                 }
                 else
                 {
                     datos.cerrarConexion();
-                    datos.setearConsulta("INSERT INTO Stock (Nombre, Cantidad) VALUES (@Nombre, @Cantidad)");
-                    datos.setearParametro("@Nombre", stock.nombre);
-                    datos.setearParametro("@Cantidad", stock.cantidad);
-                    datos.ejecutarAccion();
+
+                    AccesoDatos datosInsert = new AccesoDatos();
+                    datosInsert.setearConsulta("INSERT INTO Stock (Nombre, Cantidad) VALUES (@Nombre, @Cantidad)");
+                    datosInsert.setearParametro("@Nombre", stock.nombre);
+                    datosInsert.setearParametro("@Cantidad", stock.cantidad);
+                    datosInsert.ejecutarAccion();
                 }
             }
             catch (Exception ex)
@@ -64,6 +58,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
 
 
 
