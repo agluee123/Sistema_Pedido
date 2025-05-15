@@ -14,5 +14,6 @@ namespace Dominio
         public int Cantidad { get; set; }
         public string Observacion { get; set; }
         public string NombreArticulo { get; set; }
+        public int precio { get; set; }
     }
 }

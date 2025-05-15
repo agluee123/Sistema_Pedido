@@ -99,7 +99,7 @@ namespace Presentacion
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.AddFormattedText("IL GABINETTO", titleFont);
             paragraph.AddLineBreak();
-            paragraph.AddFormattedText("Teléfono: (123) 456-7890\nFecha: " + DateTime.Now.ToString("dd/MM/yyyy"), infoFont);
+            paragraph.AddFormattedText(DateTime.Now.ToString("dd/MM/yyyy"), infoFont);
 
             var registros = dgvRegistros.Rows.Cast<DataGridViewRow>()
                             .Where(r => !r.IsNewRow)
@@ -234,7 +234,7 @@ namespace Presentacion
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.AddFormattedText("IL GABINETTO", titleFont);
             paragraph.AddLineBreak();
-            paragraph.AddFormattedText("Teléfono: (123) 456-7890\nFecha: " + DateTime.Now.ToString("dd/MM/yyyy"), infoFont);
+            paragraph.AddFormattedText(DateTime.Now.ToString("dd/MM/yyyy"), infoFont);
 
            
             var registros = dgvRegistros.Rows.Cast<DataGridViewRow>()
@@ -403,7 +403,7 @@ namespace Presentacion
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.AddFormattedText("IL GABINETTO", titleFont);
             paragraph.AddLineBreak();
-            paragraph.AddFormattedText("Teléfono: (123) 456-7890\nFecha: " + DateTime.Now.ToString("dd/MM/yyyy"), infoFont);
+            paragraph.AddFormattedText("Fecha: " + DateTime.Now.ToString("dd/MM/yyyy"), infoFont);
             paragraph.AddLineBreak();
             paragraph.AddFormattedText($"{categoria}", infoFont);
 

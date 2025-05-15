@@ -15,7 +15,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\agustin\Desktop\ilgabinetto\</PublishUrl>
+    <PublishUrl>C:\Users\agustin\OneDrive\Escritorio\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +25,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>13</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -206,6 +207,12 @@
     <Compile Include="Registros.Designer.cs">
       <DependentUpon>Registros.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VistaStock.Designer.cs">
+      <DependentUpon>VistaStock.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Articulos.resx">
       <DependentUpon>Articulos.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +246,9 @@
     </Compile>
     <EmbeddedResource Include="Registros.resx">
       <DependentUpon>Registros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VistaStock.resx">
+      <DependentUpon>VistaStock.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

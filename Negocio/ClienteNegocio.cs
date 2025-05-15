@@ -112,9 +112,6 @@ namespace Negocio
                 datos.setearParametro("@Telefono", modificar.Telefono);
 
                 datos.ejecutarAccion();
-        
-
-
             }
             catch (Exception ex)
             {

@@ -35,6 +35,7 @@
             this.btnRegistros = new System.Windows.Forms.Button();
             this.pbxImg = new System.Windows.Forms.PictureBox();
             this.btnEmpleados = new System.Windows.Forms.Button();
+            this.btnStock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImg)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,10 +98,10 @@
             // pbxImg
             // 
             this.pbxImg.Image = ((System.Drawing.Image)(resources.GetObject("pbxImg.Image")));
-            this.pbxImg.Location = new System.Drawing.Point(83, 94);
+            this.pbxImg.Location = new System.Drawing.Point(161, 93);
             this.pbxImg.Margin = new System.Windows.Forms.Padding(4);
             this.pbxImg.Name = "pbxImg";
-            this.pbxImg.Size = new System.Drawing.Size(896, 210);
+            this.pbxImg.Size = new System.Drawing.Size(994, 232);
             this.pbxImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxImg.TabIndex = 4;
             this.pbxImg.TabStop = false;
@@ -119,12 +120,27 @@
             this.btnEmpleados.UseVisualStyleBackColor = false;
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
             // 
+            // btnStock
+            // 
+            this.btnStock.BackColor = System.Drawing.Color.LightGray;
+            this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStock.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStock.Location = new System.Drawing.Point(1033, 416);
+            this.btnStock.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStock.Name = "btnStock";
+            this.btnStock.Size = new System.Drawing.Size(172, 102);
+            this.btnStock.TabIndex = 5;
+            this.btnStock.Text = "Stock";
+            this.btnStock.UseVisualStyleBackColor = false;
+            this.btnStock.Click += new System.EventHandler(this.btnStock_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1083, 544);
+            this.ClientSize = new System.Drawing.Size(1260, 544);
+            this.Controls.Add(this.btnStock);
             this.Controls.Add(this.btnEmpleados);
             this.Controls.Add(this.pbxImg);
             this.Controls.Add(this.btnRegistros);
@@ -153,6 +169,7 @@
         private System.Windows.Forms.Button btnRegistros;
         private System.Windows.Forms.PictureBox pbxImg;
         private System.Windows.Forms.Button btnEmpleados;
+        private System.Windows.Forms.Button btnStock;
     }
 }
 

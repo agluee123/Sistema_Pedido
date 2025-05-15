@@ -54,7 +54,6 @@ namespace Presentacion
 
         private void CargarDatos()
         {
-           
             try
             {
                 lista = new ArticuloNegocio().listar();

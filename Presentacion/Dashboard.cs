@@ -49,5 +49,11 @@ namespace Presentacion
             Empleados agregar= new Empleados(); 
             agregar.ShowDialog();     
         }
+
+        private void btnStock_Click(object sender, EventArgs e)
+        {
+            VistaStock stock=new VistaStock();
+            stock.ShowDialog();
+        }
     }
 }
