@@ -211,16 +211,28 @@ namespace Ilgabinetto
         {
             try
             {
+                // Verificar que haya una fila seleccionada
                 if (dgvEntrega.CurrentRow == null)
                 {
                     MessageBox.Show("Seleccioná una entrega de la lista para modificar.");
                     return;
                 }
 
+                // Validar campos del formulario
+                if (string.IsNullOrWhiteSpace(cbxProducto.Text) ||
+                    string.IsNullOrWhiteSpace(tbxCantidad.Text) ||
+                    cbxProducto.SelectedIndex == -1) // No hay producto seleccionado
+                {
+                    MessageBox.Show("Completá todos los campos: persona, cantidad y producto.");
+                    return;
+                }
+
+                // Obtener datos de la fila seleccionada
                 int idEntrega = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["Id"].Value);
                 int idStockAnterior = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["IdStock"].Value);
                 int cantidadAnterior = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["CantidadEntregada"].Value);
 
+                // Crear objeto con los nuevos datos
                 EntregaStock entrega = new EntregaStock
                 {
                     id = idEntrega,
@@ -229,12 +241,7 @@ namespace Ilgabinetto
                     entregadoA = tbxEntregado.Text.Trim()               // Nueva persona
                 };
 
-                if (string.IsNullOrWhiteSpace(entrega.entregadoA))
-                {
-                    MessageBox.Show("Ingresá un nombre válido para 'Entregado a'.");
-                    return;
-                }
-
+                // Llamar al método del negocio
                 EntregaStockNegocio negocio = new EntregaStockNegocio();
                 negocio.modificarEntrega(entrega, cantidadAnterior, idStockAnterior);
 
@@ -246,6 +253,22 @@ namespace Ilgabinetto
             catch (Exception ex)
             {
                 MessageBox.Show("Error al modificar la entrega: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvEntrega_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvEntrega.CurrentRow != null)
+            {
+                // Obtener la fila seleccionada
+                DataGridViewRow fila = dgvEntrega.CurrentRow;
+
+                tbxEntregado.Text = fila.Cells["EntregadoA"].Value.ToString();
+                tbxCantidad.Text = fila.Cells["CantidadEntregada"].Value.ToString();
+
+                // Seleccionar el producto en el ComboBox
+                int idStock = Convert.ToInt32(fila.Cells["IdStock"].Value);
+                cbxProducto.SelectedValue = idStock;
             }
         }
     }

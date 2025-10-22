@@ -310,6 +310,7 @@
             this.dgvEntrega.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEntrega.Size = new System.Drawing.Size(659, 276);
             this.dgvEntrega.TabIndex = 9;
+            this.dgvEntrega.SelectionChanged += new System.EventHandler(this.dgvEntrega_SelectionChanged);
             // 
             // label1
             // 
