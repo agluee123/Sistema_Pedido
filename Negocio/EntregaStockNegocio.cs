@@ -58,7 +58,7 @@ namespace Negocio
                 comando.CommandType = System.Data.CommandType.Text;
 
                 comando.CommandText = @"
-                SELECT e.Id, s.Nombre AS NombreProducto, e.EntregadoA, e.CantidadEntregada, e.FechaEntrega
+                SELECT e.Id, e.IdStock, s.Nombre AS NombreProducto, e.EntregadoA, e.CantidadEntregada, e.FechaEntrega
                 FROM EntregaStock e
                 INNER JOIN Stock s ON e.IdStock = s.Id";
 
@@ -71,6 +71,7 @@ namespace Negocio
                 {
                     EntregaStock aux = new EntregaStock();
                     aux.id = (int)lector["Id"];
+                    aux.idStock = (int)lector["IdStock"];
                     aux.NombreProducto = lector["NombreProducto"].ToString();
                     aux.entregadoA = lector["EntregadoA"].ToString();
                     aux.cantidadEntregada = (int)lector["CantidadEntregada"];
@@ -104,6 +105,57 @@ namespace Negocio
             }
             return cantidad;
         }
+
+        public void modificarEntrega(EntregaStock entrega, int cantidadAnterior)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // Validar que la nueva cantidad no exceda el stock disponible
+                int stockActual = obtenerStockActual(entrega.idStock);
+                int diferencia = entrega.cantidadEntregada - cantidadAnterior;
+
+                if (diferencia > stockActual)
+                {
+                    throw new Exception($"No hay suficiente stock disponible. Solo quedan {stockActual} unidades.");
+                }
+
+                datos.setearConsulta(@"
+            BEGIN TRANSACTION;
+
+            -- Actualizar la entrega
+            UPDATE EntregaStock
+            SET EntregadoA = @EntregadoA,
+                CantidadEntregada = @CantidadEntregada
+            WHERE Id = @Id;
+
+            -- Ajustar el stock
+            UPDATE Stock
+            SET Cantidad = Cantidad - @Diferencia
+            WHERE Id = @IdStock;
+
+            COMMIT TRANSACTION;
+        ");
+
+                datos.setearParametro("@EntregadoA", entrega.entregadoA);
+                datos.setearParametro("@CantidadEntregada", entrega.cantidadEntregada);
+                datos.setearParametro("@Id", entrega.id);
+                datos.setearParametro("@IdStock", entrega.idStock);
+                datos.setearParametro("@Diferencia", diferencia);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al modificar la entrega: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
 
 
     }

@@ -207,6 +207,45 @@ namespace Ilgabinetto
             }
         }
 
+        private void btnMod_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvEntrega.CurrentRow == null)
+                {
+                    MessageBox.Show("Seleccioná una entrega de la lista para modificar.");
+                    return;
+                }
 
+                int idEntrega = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["Id"].Value);
+                int idStock = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["IdStock"].Value);
+                int cantidadAnterior = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["CantidadEntregada"].Value);
+
+                EntregaStock entrega = new EntregaStock
+                {
+                    id = idEntrega,
+                    idStock = idStock,
+                    entregadoA =tbxEntregado.Text.Trim(),
+                    cantidadEntregada = int.Parse(tbxCantidad.Text) // si también querés cambiar la cantidad
+                };
+
+                if (string.IsNullOrWhiteSpace(entrega.entregadoA))
+                {
+                    MessageBox.Show("Ingresá un nombre válido para 'Entregado a'.");
+                    return;
+                }
+
+                EntregaStockNegocio negocio = new EntregaStockNegocio();
+                negocio.modificarEntrega(entrega, cantidadAnterior); // <- ahora recibe ambos parámetros
+
+                MessageBox.Show("Entrega modificada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+               CargarDatos(); // refrescar el DataGridView
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar la entrega: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
