@@ -106,43 +106,133 @@ namespace Negocio
             return cantidad;
         }
 
-        public void modificarEntrega(EntregaStock entrega, int cantidadAnterior)
+        //public void modificarEntrega(EntregaStock entrega, int cantidadAnterior)
+        //{
+        //    AccesoDatos datos = new AccesoDatos();
+        //    try
+        //    {
+        //        // Validar que la nueva cantidad no exceda el stock disponible
+        //        int stockActual = obtenerStockActual(entrega.idStock);
+        //        int diferencia = entrega.cantidadEntregada - cantidadAnterior;
+
+        //        if (diferencia > stockActual)
+        //        {
+        //            throw new Exception($"No hay suficiente stock disponible. Solo quedan {stockActual} unidades.");
+        //        }
+
+        //        datos.setearConsulta(@"
+        //    BEGIN TRANSACTION;
+
+        //    -- Actualizar la entrega
+        //    UPDATE EntregaStock
+        //    SET EntregadoA = @EntregadoA,
+        //        CantidadEntregada = @CantidadEntregada
+        //    WHERE Id = @Id;
+
+        //    -- Ajustar el stock
+        //    UPDATE Stock
+        //    SET Cantidad = Cantidad - @Diferencia
+        //    WHERE Id = @IdStock;
+
+        //    COMMIT TRANSACTION;
+        //");
+
+        //        datos.setearParametro("@EntregadoA", entrega.entregadoA);
+        //        datos.setearParametro("@CantidadEntregada", entrega.cantidadEntregada);
+        //        datos.setearParametro("@Id", entrega.id);
+        //        datos.setearParametro("@IdStock", entrega.idStock);
+        //        datos.setearParametro("@Diferencia", diferencia);
+
+        //        datos.ejecutarAccion();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Error al modificar la entrega: " + ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+        //}
+
+        public void modificarEntrega(EntregaStock entrega, int cantidadAnterior, int idStockAnterior)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                // Validar que la nueva cantidad no exceda el stock disponible
-                int stockActual = obtenerStockActual(entrega.idStock);
-                int diferencia = entrega.cantidadEntregada - cantidadAnterior;
+                // Obtener stock actual de ambos artículos
+                int stockOriginal = obtenerStockActual(idStockAnterior);
+                int stockNuevo = obtenerStockActual(entrega.idStock);
 
-                if (diferencia > stockActual)
+                // Calcular la diferencia de cantidad si es el mismo artículo
+                if (entrega.idStock == idStockAnterior)
                 {
-                    throw new Exception($"No hay suficiente stock disponible. Solo quedan {stockActual} unidades.");
+                    int diferencia = entrega.cantidadEntregada - cantidadAnterior;
+                    if (diferencia > stockNuevo)
+                        throw new Exception($"No hay suficiente stock. Solo quedan {stockNuevo} unidades.");
+
+                    datos.setearConsulta(@"
+                BEGIN TRANSACTION;
+
+                -- Actualizar la entrega
+                UPDATE EntregaStock
+                SET EntregadoA = @EntregadoA,
+                    CantidadEntregada = @CantidadEntregada
+                WHERE Id = @Id;
+
+                -- Ajustar el stock del mismo artículo
+                UPDATE Stock
+                SET Cantidad = Cantidad - @Diferencia
+                WHERE Id = @IdStock;
+
+                COMMIT TRANSACTION;
+            ");
+
+                    datos.setearParametro("@Diferencia", diferencia);
+                }
+                else
+                {
+                    // Si el artículo cambia, devolver cantidad anterior al stock del artículo viejo
+                    if (entrega.cantidadEntregada > stockNuevo)
+                        throw new Exception($"No hay suficiente stock del nuevo artículo. Solo quedan {stockNuevo} unidades.");
+
+                    datos.setearConsulta(@"
+                BEGIN TRANSACTION;
+
+                -- Ajustar stock antiguo (devolver cantidad anterior)
+                UPDATE Stock
+                SET Cantidad = Cantidad + @CantidadAnterior
+                WHERE Id = @IdStockAnterior;
+
+                -- Ajustar stock nuevo (restar nueva cantidad)
+                UPDATE Stock
+                SET Cantidad = Cantidad - @CantidadNueva
+                WHERE Id = @IdStockNuevo;
+
+                -- Actualizar entrega con nuevo artículo
+                UPDATE EntregaStock
+                SET EntregadoA = @EntregadoA,
+                    CantidadEntregada = @CantidadNueva,
+                    IdStock = @IdStockNuevo
+                WHERE Id = @Id;
+
+                COMMIT TRANSACTION;
+            ");
+
+                    datos.setearParametro("@CantidadAnterior", cantidadAnterior);
+                    datos.setearParametro("@CantidadNueva", entrega.cantidadEntregada);
+                    datos.setearParametro("@IdStockAnterior", idStockAnterior);
+                    datos.setearParametro("@IdStockNuevo", entrega.idStock);
                 }
 
-                datos.setearConsulta(@"
-            BEGIN TRANSACTION;
-
-            -- Actualizar la entrega
-            UPDATE EntregaStock
-            SET EntregadoA = @EntregadoA,
-                CantidadEntregada = @CantidadEntregada
-            WHERE Id = @Id;
-
-            -- Ajustar el stock
-            UPDATE Stock
-            SET Cantidad = Cantidad - @Diferencia
-            WHERE Id = @IdStock;
-
-            COMMIT TRANSACTION;
-        ");
-
+                // Parámetros comunes
                 datos.setearParametro("@EntregadoA", entrega.entregadoA);
                 datos.setearParametro("@CantidadEntregada", entrega.cantidadEntregada);
                 datos.setearParametro("@Id", entrega.id);
-                datos.setearParametro("@IdStock", entrega.idStock);
-                datos.setearParametro("@Diferencia", diferencia);
+                if (entrega.idStock == idStockAnterior)
+                    datos.setearParametro("@IdStock", entrega.idStock);
 
+                // Ejecutar la acción
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -154,6 +244,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
 
 
 

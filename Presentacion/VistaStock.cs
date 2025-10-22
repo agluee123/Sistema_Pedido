@@ -218,15 +218,15 @@ namespace Ilgabinetto
                 }
 
                 int idEntrega = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["Id"].Value);
-                int idStock = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["IdStock"].Value);
+                int idStockAnterior = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["IdStock"].Value);
                 int cantidadAnterior = Convert.ToInt32(dgvEntrega.CurrentRow.Cells["CantidadEntregada"].Value);
 
                 EntregaStock entrega = new EntregaStock
                 {
                     id = idEntrega,
-                    idStock = idStock,
-                    entregadoA =tbxEntregado.Text.Trim(),
-                    cantidadEntregada = int.Parse(tbxCantidad.Text) // si también querés cambiar la cantidad
+                    idStock = Convert.ToInt32(cbxProducto.SelectedValue), // Nuevo artículo
+                    cantidadEntregada = int.Parse(tbxCantidad.Text),       // Nueva cantidad
+                    entregadoA = tbxEntregado.Text.Trim()               // Nueva persona
                 };
 
                 if (string.IsNullOrWhiteSpace(entrega.entregadoA))
@@ -236,11 +236,12 @@ namespace Ilgabinetto
                 }
 
                 EntregaStockNegocio negocio = new EntregaStockNegocio();
-                negocio.modificarEntrega(entrega, cantidadAnterior); // <- ahora recibe ambos parámetros
+                negocio.modificarEntrega(entrega, cantidadAnterior, idStockAnterior);
 
                 MessageBox.Show("Entrega modificada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-               CargarDatos(); // refrescar el DataGridView
+                // Refrescar el DataGridView
+                CargarDatos();
             }
             catch (Exception ex)
             {
