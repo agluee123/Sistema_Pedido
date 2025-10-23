@@ -51,40 +51,36 @@
             // 
             this.dgvArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(588, 94);
-            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvArticulos.Location = new System.Drawing.Point(470, 75);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 51;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(879, 638);
+            this.dgvArticulos.Size = new System.Drawing.Size(703, 510);
             this.dgvArticulos.TabIndex = 0;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // tbxFiltro
             // 
-            this.tbxFiltro.Location = new System.Drawing.Point(688, 50);
-            this.tbxFiltro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxFiltro.Location = new System.Drawing.Point(550, 40);
             this.tbxFiltro.Name = "tbxFiltro";
-            this.tbxFiltro.Size = new System.Drawing.Size(706, 22);
+            this.tbxFiltro.Size = new System.Drawing.Size(566, 20);
             this.tbxFiltro.TabIndex = 2;
             this.tbxFiltro.TextChanged += new System.EventHandler(this.tbxFiltro_TextChanged);
             // 
             // lblFiltro
             // 
             this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(588, 54);
-            this.lblFiltro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFiltro.Location = new System.Drawing.Point(470, 43);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(52, 16);
+            this.lblFiltro.Size = new System.Drawing.Size(43, 13);
             this.lblFiltro.TabIndex = 1;
             this.lblFiltro.Text = "Buscar:";
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(42, 225);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregar.Location = new System.Drawing.Point(34, 180);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(172, 28);
+            this.btnAgregar.Size = new System.Drawing.Size(138, 22);
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar articulo";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -98,10 +94,9 @@
             "Tres agujeros",
             "Monocomando",
             "No corresponde"});
-            this.cbxPerforacion.Location = new System.Drawing.Point(220, 145);
-            this.cbxPerforacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxPerforacion.Location = new System.Drawing.Point(176, 116);
             this.cbxPerforacion.Name = "cbxPerforacion";
-            this.cbxPerforacion.Size = new System.Drawing.Size(160, 24);
+            this.cbxPerforacion.Size = new System.Drawing.Size(129, 21);
             this.cbxPerforacion.TabIndex = 4;
             // 
             // cbxCategoria
@@ -109,19 +104,18 @@
             this.cbxCategoria.FormattingEnabled = true;
             this.cbxCategoria.Items.AddRange(new object[] {
             "Mueble",
-            "Mesada"});
-            this.cbxCategoria.Location = new System.Drawing.Point(220, 88);
-            this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            "Mesada",
+            "Espejo"});
+            this.cbxCategoria.Location = new System.Drawing.Point(176, 70);
             this.cbxCategoria.Name = "cbxCategoria";
-            this.cbxCategoria.Size = new System.Drawing.Size(160, 24);
+            this.cbxCategoria.Size = new System.Drawing.Size(129, 21);
             this.cbxCategoria.TabIndex = 2;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(92, 304);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Location = new System.Drawing.Point(74, 243);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(100, 28);
+            this.btnEliminar.Size = new System.Drawing.Size(80, 22);
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -130,29 +124,26 @@
             // lblPerforacion
             // 
             this.lblPerforacion.AutoSize = true;
-            this.lblPerforacion.Location = new System.Drawing.Point(112, 155);
-            this.lblPerforacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPerforacion.Location = new System.Drawing.Point(90, 124);
             this.lblPerforacion.Name = "lblPerforacion";
-            this.lblPerforacion.Size = new System.Drawing.Size(76, 16);
+            this.lblPerforacion.Size = new System.Drawing.Size(61, 13);
             this.lblPerforacion.TabIndex = 3;
             this.lblPerforacion.Text = "Perforacion";
             // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(112, 98);
-            this.lblCategoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCategoria.Location = new System.Drawing.Point(90, 78);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(66, 16);
+            this.lblCategoria.Size = new System.Drawing.Size(52, 13);
             this.lblCategoria.TabIndex = 1;
             this.lblCategoria.Text = "Categoria";
             // 
             // btnModiicar
             // 
-            this.btnModiicar.Location = new System.Drawing.Point(279, 225);
-            this.btnModiicar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnModiicar.Location = new System.Drawing.Point(223, 180);
             this.btnModiicar.Name = "btnModiicar";
-            this.btnModiicar.Size = new System.Drawing.Size(100, 28);
+            this.btnModiicar.Size = new System.Drawing.Size(80, 22);
             this.btnModiicar.TabIndex = 6;
             this.btnModiicar.Text = "Modificar";
             this.btnModiicar.UseVisualStyleBackColor = true;
@@ -161,19 +152,17 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(112, 44);
-            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNombre.Location = new System.Drawing.Point(90, 35);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(56, 16);
+            this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "Nombre";
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(279, 304);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpiar.Location = new System.Drawing.Point(223, 243);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(100, 28);
+            this.btnLimpiar.Size = new System.Drawing.Size(80, 22);
             this.btnLimpiar.TabIndex = 8;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -181,10 +170,9 @@
             // 
             // tbxNombre
             // 
-            this.tbxNombre.Location = new System.Drawing.Point(220, 44);
-            this.tbxNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxNombre.Location = new System.Drawing.Point(176, 35);
             this.tbxNombre.Name = "tbxNombre";
-            this.tbxNombre.Size = new System.Drawing.Size(132, 22);
+            this.tbxNombre.Size = new System.Drawing.Size(106, 20);
             this.tbxNombre.TabIndex = 1;
             // 
             // gbxArticulo
@@ -199,27 +187,24 @@
             this.gbxArticulo.Controls.Add(this.cbxCategoria);
             this.gbxArticulo.Controls.Add(this.cbxPerforacion);
             this.gbxArticulo.Controls.Add(this.btnAgregar);
-            this.gbxArticulo.Location = new System.Drawing.Point(32, 94);
-            this.gbxArticulo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxArticulo.Location = new System.Drawing.Point(26, 75);
             this.gbxArticulo.Name = "gbxArticulo";
-            this.gbxArticulo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gbxArticulo.Size = new System.Drawing.Size(481, 650);
+            this.gbxArticulo.Size = new System.Drawing.Size(385, 520);
             this.gbxArticulo.TabIndex = 0;
             this.gbxArticulo.TabStop = false;
             this.gbxArticulo.Text = "Cargar Articulo";
             // 
             // Articulos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1532, 780);
+            this.ClientSize = new System.Drawing.Size(1226, 624);
             this.Controls.Add(this.gbxArticulo);
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.tbxFiltro);
             this.Controls.Add(this.dgvArticulos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Articulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Articulos";

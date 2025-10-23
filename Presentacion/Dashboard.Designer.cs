@@ -44,10 +44,9 @@
             this.btnArticulos.BackColor = System.Drawing.Color.LightGray;
             this.btnArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnArticulos.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArticulos.Location = new System.Drawing.Point(260, 416);
-            this.btnArticulos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnArticulos.Location = new System.Drawing.Point(208, 333);
             this.btnArticulos.Name = "btnArticulos";
-            this.btnArticulos.Size = new System.Drawing.Size(172, 102);
+            this.btnArticulos.Size = new System.Drawing.Size(138, 82);
             this.btnArticulos.TabIndex = 1;
             this.btnArticulos.Text = "Articulos";
             this.btnArticulos.UseVisualStyleBackColor = false;
@@ -58,10 +57,9 @@
             this.btnClientes.BackColor = System.Drawing.Color.LightGray;
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClientes.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClientes.Location = new System.Drawing.Point(456, 416);
-            this.btnClientes.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClientes.Location = new System.Drawing.Point(365, 333);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(172, 102);
+            this.btnClientes.Size = new System.Drawing.Size(138, 82);
             this.btnClientes.TabIndex = 2;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.UseVisualStyleBackColor = false;
@@ -72,10 +70,9 @@
             this.btnPedidos.BackColor = System.Drawing.Color.LightGray;
             this.btnPedidos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPedidos.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPedidos.Location = new System.Drawing.Point(653, 416);
-            this.btnPedidos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPedidos.Location = new System.Drawing.Point(522, 333);
             this.btnPedidos.Name = "btnPedidos";
-            this.btnPedidos.Size = new System.Drawing.Size(172, 102);
+            this.btnPedidos.Size = new System.Drawing.Size(138, 82);
             this.btnPedidos.TabIndex = 3;
             this.btnPedidos.Text = "Pedidos";
             this.btnPedidos.UseVisualStyleBackColor = false;
@@ -86,10 +83,9 @@
             this.btnRegistros.BackColor = System.Drawing.Color.LightGray;
             this.btnRegistros.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistros.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistros.Location = new System.Drawing.Point(845, 416);
-            this.btnRegistros.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRegistros.Location = new System.Drawing.Point(841, 333);
             this.btnRegistros.Name = "btnRegistros";
-            this.btnRegistros.Size = new System.Drawing.Size(172, 102);
+            this.btnRegistros.Size = new System.Drawing.Size(138, 82);
             this.btnRegistros.TabIndex = 4;
             this.btnRegistros.Text = "Registros";
             this.btnRegistros.UseVisualStyleBackColor = false;
@@ -98,10 +94,9 @@
             // pbxImg
             // 
             this.pbxImg.Image = ((System.Drawing.Image)(resources.GetObject("pbxImg.Image")));
-            this.pbxImg.Location = new System.Drawing.Point(161, 93);
-            this.pbxImg.Margin = new System.Windows.Forms.Padding(4);
+            this.pbxImg.Location = new System.Drawing.Point(129, 74);
             this.pbxImg.Name = "pbxImg";
-            this.pbxImg.Size = new System.Drawing.Size(994, 232);
+            this.pbxImg.Size = new System.Drawing.Size(795, 186);
             this.pbxImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxImg.TabIndex = 4;
             this.pbxImg.TabStop = false;
@@ -111,10 +106,9 @@
             this.btnEmpleados.BackColor = System.Drawing.Color.LightGray;
             this.btnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEmpleados.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmpleados.Location = new System.Drawing.Point(68, 416);
-            this.btnEmpleados.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEmpleados.Location = new System.Drawing.Point(54, 333);
             this.btnEmpleados.Name = "btnEmpleados";
-            this.btnEmpleados.Size = new System.Drawing.Size(172, 102);
+            this.btnEmpleados.Size = new System.Drawing.Size(138, 82);
             this.btnEmpleados.TabIndex = 0;
             this.btnEmpleados.Text = "Empleados";
             this.btnEmpleados.UseVisualStyleBackColor = false;
@@ -125,10 +119,9 @@
             this.btnStock.BackColor = System.Drawing.Color.LightGray;
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStock.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStock.Location = new System.Drawing.Point(1033, 416);
-            this.btnStock.Margin = new System.Windows.Forms.Padding(4);
+            this.btnStock.Location = new System.Drawing.Point(684, 333);
             this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(172, 102);
+            this.btnStock.Size = new System.Drawing.Size(138, 82);
             this.btnStock.TabIndex = 5;
             this.btnStock.Text = "Stock";
             this.btnStock.UseVisualStyleBackColor = false;
@@ -136,10 +129,10 @@
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1260, 544);
+            this.ClientSize = new System.Drawing.Size(1008, 435);
             this.Controls.Add(this.btnStock);
             this.Controls.Add(this.btnEmpleados);
             this.Controls.Add(this.pbxImg);
@@ -150,7 +143,6 @@
             this.ForeColor = System.Drawing.SystemColors.WindowText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
