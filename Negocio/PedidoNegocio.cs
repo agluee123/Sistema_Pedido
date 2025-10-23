@@ -196,6 +196,58 @@ namespace Negocio
 
         }
 
+        public void ModificarTipo(Pedido modificar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE PEDIDOS SET Tipo=@Tipo WHERE id_pedido = @Id");
+
+                datos.setearParametro("@Id", modificar.IdPedido);
+                datos.setearParametro("@Tipo", modificar.Tipo);
+
+                datos.ejecutarAccion();
+
+                datos.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public Pedido ObtenerPorId(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Pedido pedido = new Pedido();
+
+            try
+            {
+                datos.setearConsulta("SELECT id_pedido, Tipo, Estado FROM PEDIDOS WHERE id_pedido = @id");
+                datos.setearParametro("@id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    pedido.IdPedido = (int)datos.Lector["id_pedido"];
+                    pedido.Tipo = datos.Lector["Tipo"].ToString();
+                    pedido.Estado = datos.Lector["Estado"].ToString();
+                }
+
+                return pedido;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener el pedido: " + ex.Message);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
 
 
 

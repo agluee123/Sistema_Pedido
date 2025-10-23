@@ -27,14 +27,63 @@ namespace Presentacion
 
         private void Cargar_Pedido_Load(object sender, EventArgs e)
         {
-            ArticuloNegocio negocio=new ArticuloNegocio();
-            List<Articulo> articulos=negocio.listar();
-            cbxArticulo.DataSource=articulos;
+            //ArticuloNegocio negocio=new ArticuloNegocio();
+            //List<Articulo> articulos=negocio.listar();
+            //cbxArticulo.DataSource=articulos;
+            //cbxArticulo.DisplayMember = "Nombre";
+            //cbxArticulo.ValueMember = "IdArticulo";
+
+            //cbxTipo.Items.Clear();
+            //cbxTipo.Items.Add("Transporte");
+            //cbxTipo.Items.Add("Viaje");
+            //cbxTipo.Items.Add("Semanal");
+
+            //PedidoNegocio pedidoNegocio = new PedidoNegocio();
+            //Pedido pedidoActual = pedidoNegocio.ObtenerPorId(PedidoId);
+
+            //// Mostrar el tipo actual en el ComboBox
+            //if (!string.IsNullOrEmpty(pedidoActual.Tipo))
+            //{
+            //    cbxTipo.SelectedItem = pedidoActual.Tipo;
+            //}
+
+            //CargarDatos();
+            //CambiarOrdenColumnas();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            List<Articulo> articulos = negocio.listar();
+
+            cbxArticulo.DataSource = articulos;
             cbxArticulo.DisplayMember = "Nombre";
             cbxArticulo.ValueMember = "IdArticulo";
+
+            // 🔹 Cargar opciones de Tipo
+            cbxTipo.Items.Clear();
+            cbxTipo.Items.Add("Transporte");
+            cbxTipo.Items.Add("Viaje");
+            cbxTipo.Items.Add("Semanal");
+
+            // 🔹 Cargar opciones de Estado
+            CbxEstado.Items.Clear();
+            CbxEstado.Items.Add("Pendiente");
+            CbxEstado.Items.Add("En proceso");
+            CbxEstado.Items.Add("Entregado");
+            CbxEstado.Items.Add("Cancelado");
+
+            // 🔹 Obtener el pedido actual
+            PedidoNegocio pedidoNegocio = new PedidoNegocio();
+            Pedido pedidoActual = pedidoNegocio.ObtenerPorId(PedidoId);
+
+            // 🔹 Mostrar el tipo y estado actuales en los ComboBox
+            if (!string.IsNullOrEmpty(pedidoActual.Tipo))
+                cbxTipo.SelectedItem = pedidoActual.Tipo;
+
+            if (!string.IsNullOrEmpty(pedidoActual.Estado))
+                CbxEstado.SelectedItem = pedidoActual.Estado;
+
+            // Cargar artículos del pedido
             CargarDatos();
             CambiarOrdenColumnas();
-            
+
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -201,7 +250,47 @@ namespace Presentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Si el usuario no seleccionó un nuevo tipo, no hacemos nada
+                if (cbxTipo.SelectedItem == null)
+                {
+                    MessageBox.Show("No seleccionaste ningún tipo nuevo. No se realizaron cambios.",
+                                    "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
+                // Obtener el tipo seleccionado
+                string nuevoTipo = cbxTipo.SelectedItem.ToString();
+
+                // Confirmar el cambio antes de aplicar
+                DialogResult respuesta = MessageBox.Show(
+                    $"¿Seguro que querés cambiar el tipo de pedido a '{nuevoTipo}'?",
+                    "Confirmar cambio",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (respuesta == DialogResult.Yes)
+                {
+                    Pedido pedido = new Pedido
+                    {
+                        IdPedido = PedidoId,
+                        Tipo = nuevoTipo
+                    };
+
+                    PedidoNegocio negocio = new PedidoNegocio();
+                    negocio.ModificarTipo(pedido);
+
+                    MessageBox.Show("Tipo de pedido modificado correctamente.",
+                                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el tipo: " + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

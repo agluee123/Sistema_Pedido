@@ -12,7 +12,6 @@ namespace Sistema_de_pedidos
         public string nombre { get; set; }
         public int cantidad { get; set; }
 
-
         public override string ToString()
         {
             return nombre;

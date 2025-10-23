@@ -23,6 +23,5 @@ namespace Sistema_de_pedidos
         public string Perforacion { get; set; }
 
         public string Observacion { get; set; }
-        public object EsSemanal { get; set; }
     }
 }

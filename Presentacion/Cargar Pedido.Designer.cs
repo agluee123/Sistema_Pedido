@@ -48,7 +48,7 @@
             this.gbxTipo = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxTipo = new System.Windows.Forms.ComboBox();
             this.gbxPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
@@ -226,7 +226,7 @@
             // 
             this.gbxTipo.Controls.Add(this.button1);
             this.gbxTipo.Controls.Add(this.label1);
-            this.gbxTipo.Controls.Add(this.comboBox1);
+            this.gbxTipo.Controls.Add(this.cbxTipo);
             this.gbxTipo.Location = new System.Drawing.Point(450, 110);
             this.gbxTipo.Name = "gbxTipo";
             this.gbxTipo.Size = new System.Drawing.Size(355, 91);
@@ -253,17 +253,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tipo Pedido";
             // 
-            // comboBox1
+            // cbxTipo
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxTipo.FormattingEnabled = true;
+            this.cbxTipo.Items.AddRange(new object[] {
             "Entregado",
             "Pendiente"});
-            this.comboBox1.Location = new System.Drawing.Point(38, 34);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(245, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cbxTipo.Location = new System.Drawing.Point(38, 34);
+            this.cbxTipo.Name = "cbxTipo";
+            this.cbxTipo.Size = new System.Drawing.Size(245, 21);
+            this.cbxTipo.TabIndex = 1;
             // 
             // Cargar_Pedido
             // 
@@ -313,6 +313,6 @@
         private System.Windows.Forms.GroupBox gbxTipo;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxTipo;
     }
 }
