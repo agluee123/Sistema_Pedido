@@ -271,5 +271,55 @@ namespace Ilgabinetto
                 cbxProducto.SelectedValue = idStock;
             }
         }
+
+        private void btnStockControl_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime fechaDesde = dtpStock.Value.Date;
+                DateTime fechaHasta = dtpStock1.Value.Date;
+
+                if (fechaDesde > fechaHasta)
+                {
+                    MessageBox.Show("La fecha 'Desde' no puede ser mayor que la fecha 'Hasta'.");
+                    return;
+                }
+
+                if (lista2 == null || lista2.Count == 0)
+                {
+                    MessageBox.Show("No hay entregas registradas para filtrar.");
+                    return;
+                }
+
+                var entregasFiltradas = lista2
+                    .Where(entrega => entrega.fechaEntrega.Date >= fechaDesde && entrega.fechaEntrega.Date <= fechaHasta)
+                    .ToList();
+
+                if (entregasFiltradas.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron entregas en el rango seleccionado.");
+                    return;
+                }
+
+                var resumen = entregasFiltradas
+                    .GroupBy(entrega => entrega.idStock)
+                    .Select(grupo => new
+                    {
+                        Producto = lista.FirstOrDefault(s => s.id == grupo.Key)?.nombre ?? "Desconocido",
+                        CantidadEntregada = grupo.Sum(x => x.cantidadEntregada)
+                    })
+                    .ToList();
+
+                dgvStockControl.DataSource = resumen;
+
+
+                dgvStockControl.Columns["Producto"].HeaderText = "Producto";
+                dgvStockControl.Columns["CantidadEntregada"].HeaderText = "Cantidad Entregada";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar entregas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

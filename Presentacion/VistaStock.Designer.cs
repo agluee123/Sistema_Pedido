@@ -55,10 +55,17 @@
             this.dgvEntrega = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.dgvStockControl = new System.Windows.Forms.DataGridView();
+            this.btnStockControl = new System.Windows.Forms.Button();
+            this.dtpStock = new System.Windows.Forms.DateTimePicker();
+            this.dtpStock1 = new System.Windows.Forms.DateTimePicker();
+            this.labeLDesde = new System.Windows.Forms.Label();
+            this.labelHasta = new System.Windows.Forms.Label();
             this.gbxStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStock)).BeginInit();
             this.gbxEntrega.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntrega)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStockControl)).BeginInit();
             this.SuspendLayout();
             // 
             // gbxStock
@@ -328,11 +335,67 @@
             this.textBox2.Size = new System.Drawing.Size(531, 20);
             this.textBox2.TabIndex = 11;
             // 
+            // dgvStockControl
+            // 
+            this.dgvStockControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStockControl.Location = new System.Drawing.Point(454, 678);
+            this.dgvStockControl.Name = "dgvStockControl";
+            this.dgvStockControl.Size = new System.Drawing.Size(659, 226);
+            this.dgvStockControl.TabIndex = 12;
+            // 
+            // btnStockControl
+            // 
+            this.btnStockControl.Location = new System.Drawing.Point(136, 834);
+            this.btnStockControl.Name = "btnStockControl";
+            this.btnStockControl.Size = new System.Drawing.Size(75, 23);
+            this.btnStockControl.TabIndex = 13;
+            this.btnStockControl.Text = "buscar";
+            this.btnStockControl.UseVisualStyleBackColor = true;
+            this.btnStockControl.Click += new System.EventHandler(this.btnStockControl_Click);
+            // 
+            // dtpStock
+            // 
+            this.dtpStock.Location = new System.Drawing.Point(58, 727);
+            this.dtpStock.Name = "dtpStock";
+            this.dtpStock.Size = new System.Drawing.Size(244, 20);
+            this.dtpStock.TabIndex = 14;
+            // 
+            // dtpStock1
+            // 
+            this.dtpStock1.Location = new System.Drawing.Point(57, 791);
+            this.dtpStock1.Name = "dtpStock1";
+            this.dtpStock1.Size = new System.Drawing.Size(244, 20);
+            this.dtpStock1.TabIndex = 15;
+            // 
+            // labeLDesde
+            // 
+            this.labeLDesde.AutoSize = true;
+            this.labeLDesde.Location = new System.Drawing.Point(55, 711);
+            this.labeLDesde.Name = "labeLDesde";
+            this.labeLDesde.Size = new System.Drawing.Size(44, 13);
+            this.labeLDesde.TabIndex = 16;
+            this.labeLDesde.Text = "Desde :";
+            // 
+            // labelHasta
+            // 
+            this.labelHasta.AutoSize = true;
+            this.labelHasta.Location = new System.Drawing.Point(55, 775);
+            this.labelHasta.Name = "labelHasta";
+            this.labelHasta.Size = new System.Drawing.Size(41, 13);
+            this.labelHasta.TabIndex = 17;
+            this.labelHasta.Text = "Hasta :";
+            // 
             // VistaStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 634);
+            this.ClientSize = new System.Drawing.Size(1149, 936);
+            this.Controls.Add(this.labelHasta);
+            this.Controls.Add(this.labeLDesde);
+            this.Controls.Add(this.dtpStock1);
+            this.Controls.Add(this.dtpStock);
+            this.Controls.Add(this.btnStockControl);
+            this.Controls.Add(this.dgvStockControl);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.dgvEntrega);
@@ -352,6 +415,7 @@
             this.gbxEntrega.ResumeLayout(false);
             this.gbxEntrega.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEntrega)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStockControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,5 +450,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button btnMod;
+        private System.Windows.Forms.DataGridView dgvStockControl;
+        private System.Windows.Forms.Button btnStockControl;
+        private System.Windows.Forms.DateTimePicker dtpStock;
+        private System.Windows.Forms.DateTimePicker dtpStock1;
+        private System.Windows.Forms.Label labeLDesde;
+        private System.Windows.Forms.Label labelHasta;
     }
 }
