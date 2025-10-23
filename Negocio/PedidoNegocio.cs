@@ -216,7 +216,7 @@ namespace Negocio
             }
 
         }
-
+        //ss
         public Pedido ObtenerPorId(int id)
         {
             AccesoDatos datos = new AccesoDatos();
