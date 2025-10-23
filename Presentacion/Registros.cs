@@ -374,8 +374,8 @@ namespace Presentacion
             
             var registrosMueble = registros.Where(r => r.Categoria == "Mueble").ToList();
             var registrosMesada = registros.Where(r => r.Categoria == "Mesada").ToList();
+            var registrosEspejo = registros.Where(r => r.Categoria == "Espejo").ToList();
 
-           
             if (registrosMueble.Any())
             {
                 GenerarPDF("Mueble", registrosMueble);
@@ -385,6 +385,13 @@ namespace Presentacion
             if (registrosMesada.Any())
             {
                 GenerarPDF("Mesada", registrosMesada);
+            }
+
+
+
+            if (registrosEspejo.Any())
+            {
+                GenerarPDF("Espejo", registrosEspejo);
             }
 
         }
