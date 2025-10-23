@@ -79,7 +79,7 @@ namespace Presentacion
             GenerarPedidosPDF();
 
             GenerarPDFPorCategoria();
-
+            GenerarPDFViajeMueblesEspejos(); // Nuevo PDF extra
         }
 
 
@@ -212,10 +212,6 @@ namespace Presentacion
 
         }
 
-
-
-
-
         private void GenerarPedidosPDF()
         {
              
@@ -321,7 +317,7 @@ namespace Presentacion
             string tipo = registros.FirstOrDefault()?.Tipo ?? "Otro";
 
 
-            string subcarpeta = tipo == "Viaje" ? "Viaje" : tipo == "Semanal" ? "Semanal" : "otros";
+            string subcarpeta = tipo == "Viaje" ? "Viaje" : tipo == "Semanal" ? "Semanal" : "Transporte";
 
           
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -484,11 +480,108 @@ namespace Presentacion
 
             MessageBox.Show("PDF generado exitosamente en la carpeta 'pedidos/viaje' del escritorio.");
 
+        }
 
+        private void GenerarPDFViajeMueblesEspejos()
+        {
+            var registros = dgvRegistros.Rows.Cast<DataGridViewRow>()
+                .Where(r => !r.IsNewRow)
+                .Select(r => new Registro
+                {
+                    IdPedido = (int)r.Cells["idPedido"].Value,
+                    NombreCliente = (string)r.Cells["NombreCliente"].Value,
+                    Fecha = (DateTime)r.Cells["fecha"].Value,
+                    Cantidad = (int)r.Cells["cantidad"].Value,
+                    NombreArticulo = (string)r.Cells["nombreArticulo"].Value,
+                    Categoria = (string)r.Cells["Categoria"].Value,
+                    Perforacion = (string)r.Cells["perforacion"].Value,
+                    Tipo = (string)r.Cells["Tipo"].Value,
+                    Observacion = r.Cells["observacion"].Value != DBNull.Value ? (string)r.Cells["observacion"].Value : string.Empty
+                })
+                .Where(r => r.Categoria == "Mueble" || r.Categoria == "Espejo") // Solo muebles y espejos
+                .OrderBy(r => r.NombreCliente)
+                .ThenBy(r => r.IdPedido)
+                .ToList();
+
+            if (!registros.Any())
+                return; // No hay registros que mostrar
+
+            Document document = new Document();
+            Section section = document.AddSection();
+
+            MigraDoc.DocumentObjectModel.Font titleFont = new MigraDoc.DocumentObjectModel.Font("Arial", 14);
+            MigraDoc.DocumentObjectModel.Font infoFont = new MigraDoc.DocumentObjectModel.Font("Arial", 10);
+            MigraDoc.DocumentObjectModel.Font headerFont = new MigraDoc.DocumentObjectModel.Font("Arial", 10);
+            MigraDoc.DocumentObjectModel.Font textFont = new MigraDoc.DocumentObjectModel.Font("Arial", 10);
+
+            // Título
+            Paragraph paragraph = section.AddParagraph();
+            paragraph.Format.Alignment = ParagraphAlignment.Center;
+            paragraph.AddFormattedText("IL GABINETTO - Viaje Muebles y Espejos", titleFont);
+            paragraph.AddLineBreak();
+            paragraph.AddFormattedText("Fecha: " + DateTime.Now.ToString("dd/MM/yyyy"), infoFont);
+
+            var registrosAgrupados = registros.GroupBy(r => r.NombreArticulo)
+                .Select(g => new
+                {
+                    NombreArticulo = g.Key,
+                    CantidadTotal = g.Sum(r => r.Cantidad),
+                    Observaciones = g.Select(r => r.Observacion).Where(o => !string.IsNullOrWhiteSpace(o)).Distinct().ToList(),
+                    Perforacion = g.Select(r => r.Perforacion).Where(o => !string.IsNullOrWhiteSpace(o)).Distinct().ToList()
+                })
+                .OrderBy(g => g.NombreArticulo)
+                .ToList();
+
+            Table table = section.AddTable();
+            table.Borders.Width = 0.75;
+            Column column = table.AddColumn(Unit.FromCentimeter(16));
+
+            foreach (var grupo in registrosAgrupados)
+            {
+                Row tableRow = table.AddRow();
+                Cell cell = tableRow.Cells[0];
+                cell.Shading.Color = Colors.White;
+                cell.Borders.Width = 1;
+
+                Paragraph pedidoBox = cell.AddParagraph();
+                pedidoBox.Format.SpaceBefore = "1mm";
+                pedidoBox.Format.SpaceAfter = "1mm";
+
+                bool esPerforacionNoCorresponde = grupo.Perforacion == null || grupo.Perforacion.Count == 0 || grupo.Perforacion.Contains("No corresponde");
+
+                pedidoBox.AddFormattedText($"{grupo.CantidadTotal} {grupo.NombreArticulo} {(esPerforacionNoCorresponde ? "" : string.Join(", ", grupo.Perforacion))}", headerFont);
+                pedidoBox.AddLineBreak();
+
+                foreach (var observacion in grupo.Observaciones)
+                {
+                    pedidoBox.AddFormattedText($"Observación: {observacion}\n", textFont);
+                }
+            }
+
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string folderPath = Path.Combine(desktopPath, "pedidos", "Viaje");
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+
+            string timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
+            string pdfPath = Path.Combine(folderPath, $"Muebles_Espejos_Viaje_{timestamp}.pdf");
+
+            PdfDocumentRenderer pdfRenderer = new PdfDocumentRenderer(true)
+            {
+                Document = document
+            };
+            pdfRenderer.RenderDocument();
+            pdfRenderer.PdfDocument.Save(pdfPath);
+
+            MessageBox.Show("PDF de Muebles y Espejos generado en 'pedidos/Viaje'.");
         }
 
 
+
     }
-    
+
 
 }

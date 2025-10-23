@@ -10,7 +10,6 @@ namespace Dominio
     {
         public int IdPedido { get; set; }
         public DateTime Fecha { get; set; }
-        
         public int ClienteId { get; set; }
         public string NombreCliente { get; set; }
         public string Tipo { get; set; }

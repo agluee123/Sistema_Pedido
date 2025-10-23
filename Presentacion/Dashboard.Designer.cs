@@ -83,7 +83,7 @@
             this.btnRegistros.BackColor = System.Drawing.Color.LightGray;
             this.btnRegistros.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistros.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistros.Location = new System.Drawing.Point(841, 333);
+            this.btnRegistros.Location = new System.Drawing.Point(685, 333);
             this.btnRegistros.Name = "btnRegistros";
             this.btnRegistros.Size = new System.Drawing.Size(138, 82);
             this.btnRegistros.TabIndex = 4;
@@ -119,7 +119,7 @@
             this.btnStock.BackColor = System.Drawing.Color.LightGray;
             this.btnStock.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStock.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStock.Location = new System.Drawing.Point(684, 333);
+            this.btnStock.Location = new System.Drawing.Point(839, 333);
             this.btnStock.Name = "btnStock";
             this.btnStock.Size = new System.Drawing.Size(138, 82);
             this.btnStock.TabIndex = 5;

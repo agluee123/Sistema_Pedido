@@ -45,10 +45,15 @@
             this.CbxEstado = new System.Windows.Forms.ComboBox();
             this.GbxEstado = new System.Windows.Forms.GroupBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.gbxTipo = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.gbxPedido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmCantidad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.GbxEstado.SuspendLayout();
+            this.gbxTipo.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbxPedido
@@ -62,21 +67,18 @@
             this.gbxPedido.Controls.Add(this.nmCantidad);
             this.gbxPedido.Controls.Add(this.lblArticulo);
             this.gbxPedido.Controls.Add(this.cbxArticulo);
-            this.gbxPedido.Location = new System.Drawing.Point(71, 15);
-            this.gbxPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.gbxPedido.Location = new System.Drawing.Point(57, 12);
             this.gbxPedido.Name = "gbxPedido";
-            this.gbxPedido.Padding = new System.Windows.Forms.Padding(4);
-            this.gbxPedido.Size = new System.Drawing.Size(483, 190);
+            this.gbxPedido.Size = new System.Drawing.Size(386, 189);
             this.gbxPedido.TabIndex = 0;
             this.gbxPedido.TabStop = false;
             this.gbxPedido.Text = "Agregar al pedido";
             // 
             // bnModificar
             // 
-            this.bnModificar.Location = new System.Drawing.Point(144, 154);
-            this.bnModificar.Margin = new System.Windows.Forms.Padding(4);
+            this.bnModificar.Location = new System.Drawing.Point(115, 159);
             this.bnModificar.Name = "bnModificar";
-            this.bnModificar.Size = new System.Drawing.Size(183, 28);
+            this.bnModificar.Size = new System.Drawing.Size(146, 22);
             this.bnModificar.TabIndex = 7;
             this.bnModificar.Text = "Modificar";
             this.bnModificar.UseVisualStyleBackColor = true;
@@ -84,10 +86,9 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(249, 120);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminar.Location = new System.Drawing.Point(199, 96);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(183, 28);
+            this.btnEliminar.Size = new System.Drawing.Size(146, 22);
             this.btnEliminar.TabIndex = 6;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -95,10 +96,9 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(24, 120);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregar.Location = new System.Drawing.Point(19, 96);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(183, 28);
+            this.btnAgregar.Size = new System.Drawing.Size(146, 22);
             this.btnAgregar.TabIndex = 5;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -106,36 +106,32 @@
             // 
             // tbxObservacion
             // 
-            this.tbxObservacion.Location = new System.Drawing.Point(59, 90);
-            this.tbxObservacion.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxObservacion.Location = new System.Drawing.Point(47, 72);
             this.tbxObservacion.Name = "tbxObservacion";
-            this.tbxObservacion.Size = new System.Drawing.Size(305, 22);
+            this.tbxObservacion.Size = new System.Drawing.Size(245, 20);
             this.tbxObservacion.TabIndex = 4;
             // 
             // lblObservacion
             // 
             this.lblObservacion.AutoSize = true;
-            this.lblObservacion.Location = new System.Drawing.Point(55, 70);
-            this.lblObservacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblObservacion.Location = new System.Drawing.Point(44, 56);
             this.lblObservacion.Name = "lblObservacion";
-            this.lblObservacion.Size = new System.Drawing.Size(87, 16);
+            this.lblObservacion.Size = new System.Drawing.Size(70, 13);
             this.lblObservacion.TabIndex = 3;
             this.lblObservacion.Text = "Observacion:";
             // 
             // lblCantidad
             // 
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(399, 22);
-            this.lblCantidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCantidad.Location = new System.Drawing.Point(319, 18);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(64, 16);
+            this.lblCantidad.Size = new System.Drawing.Size(52, 13);
             this.lblCantidad.TabIndex = 2;
             this.lblCantidad.Text = "Cantidad:";
             // 
             // nmCantidad
             // 
-            this.nmCantidad.Location = new System.Drawing.Point(403, 42);
-            this.nmCantidad.Margin = new System.Windows.Forms.Padding(4);
+            this.nmCantidad.Location = new System.Drawing.Point(322, 34);
             this.nmCantidad.Maximum = new decimal(new int[] {
             500,
             0,
@@ -147,7 +143,7 @@
             0,
             0});
             this.nmCantidad.Name = "nmCantidad";
-            this.nmCantidad.Size = new System.Drawing.Size(71, 22);
+            this.nmCantidad.Size = new System.Drawing.Size(57, 20);
             this.nmCantidad.TabIndex = 2;
             this.nmCantidad.Value = new decimal(new int[] {
             1,
@@ -158,28 +154,25 @@
             // lblArticulo
             // 
             this.lblArticulo.AutoSize = true;
-            this.lblArticulo.Location = new System.Drawing.Point(55, 23);
-            this.lblArticulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblArticulo.Location = new System.Drawing.Point(44, 18);
             this.lblArticulo.Name = "lblArticulo";
-            this.lblArticulo.Size = new System.Drawing.Size(139, 16);
+            this.lblArticulo.Size = new System.Drawing.Size(112, 13);
             this.lblArticulo.TabIndex = 1;
             this.lblArticulo.Text = "Seleccione el Articulo:";
             // 
             // cbxArticulo
             // 
             this.cbxArticulo.FormattingEnabled = true;
-            this.cbxArticulo.Location = new System.Drawing.Point(59, 42);
-            this.cbxArticulo.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxArticulo.Location = new System.Drawing.Point(47, 34);
             this.cbxArticulo.Name = "cbxArticulo";
-            this.cbxArticulo.Size = new System.Drawing.Size(305, 24);
+            this.cbxArticulo.Size = new System.Drawing.Size(245, 21);
             this.cbxArticulo.TabIndex = 2;
             // 
             // BtnModificar
             // 
-            this.BtnModificar.Location = new System.Drawing.Point(119, 76);
-            this.BtnModificar.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnModificar.Location = new System.Drawing.Point(95, 61);
             this.BtnModificar.Name = "BtnModificar";
-            this.BtnModificar.Size = new System.Drawing.Size(183, 28);
+            this.BtnModificar.Size = new System.Drawing.Size(146, 22);
             this.BtnModificar.TabIndex = 2;
             this.BtnModificar.Text = "Modificar Estado";
             this.BtnModificar.UseVisualStyleBackColor = true;
@@ -188,23 +181,21 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(43, 23);
-            this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEstado.Location = new System.Drawing.Point(34, 18);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(124, 16);
+            this.lblEstado.Size = new System.Drawing.Size(98, 13);
             this.lblEstado.TabIndex = 0;
             this.lblEstado.Text = "Estado Del Pedido:";
             // 
             // dgvPedido
             // 
             this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedido.Location = new System.Drawing.Point(55, 212);
-            this.dgvPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvPedido.Location = new System.Drawing.Point(52, 212);
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.ReadOnly = true;
             this.dgvPedido.RowHeadersWidth = 51;
             this.dgvPedido.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPedido.Size = new System.Drawing.Size(951, 554);
+            this.dgvPedido.Size = new System.Drawing.Size(761, 443);
             this.dgvPedido.TabIndex = 2;
             // 
             // CbxEstado
@@ -214,10 +205,9 @@
             this.CbxEstado.Items.AddRange(new object[] {
             "Entregado",
             "Pendiente"});
-            this.CbxEstado.Location = new System.Drawing.Point(47, 43);
-            this.CbxEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.CbxEstado.Location = new System.Drawing.Point(38, 34);
             this.CbxEstado.Name = "CbxEstado";
-            this.CbxEstado.Size = new System.Drawing.Size(305, 24);
+            this.CbxEstado.Size = new System.Drawing.Size(245, 21);
             this.CbxEstado.TabIndex = 1;
             // 
             // GbxEstado
@@ -225,26 +215,67 @@
             this.GbxEstado.Controls.Add(this.BtnModificar);
             this.GbxEstado.Controls.Add(this.lblEstado);
             this.GbxEstado.Controls.Add(this.CbxEstado);
-            this.GbxEstado.Location = new System.Drawing.Point(561, 15);
-            this.GbxEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.GbxEstado.Location = new System.Drawing.Point(449, 12);
             this.GbxEstado.Name = "GbxEstado";
-            this.GbxEstado.Padding = new System.Windows.Forms.Padding(4);
-            this.GbxEstado.Size = new System.Drawing.Size(444, 130);
+            this.GbxEstado.Size = new System.Drawing.Size(355, 92);
             this.GbxEstado.TabIndex = 1;
             this.GbxEstado.TabStop = false;
             this.GbxEstado.Text = "Estado";
             // 
+            // gbxTipo
+            // 
+            this.gbxTipo.Controls.Add(this.button1);
+            this.gbxTipo.Controls.Add(this.label1);
+            this.gbxTipo.Controls.Add(this.comboBox1);
+            this.gbxTipo.Location = new System.Drawing.Point(450, 110);
+            this.gbxTipo.Name = "gbxTipo";
+            this.gbxTipo.Size = new System.Drawing.Size(355, 91);
+            this.gbxTipo.TabIndex = 3;
+            this.gbxTipo.TabStop = false;
+            this.gbxTipo.Text = "Tipo";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(95, 61);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(146, 22);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Modificar Tipo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Tipo Pedido";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Entregado",
+            "Pendiente"});
+            this.comboBox1.Location = new System.Drawing.Point(38, 34);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(245, 21);
+            this.comboBox1.TabIndex = 1;
+            // 
             // Cargar_Pedido
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1049, 780);
+            this.ClientSize = new System.Drawing.Size(839, 676);
+            this.Controls.Add(this.gbxTipo);
             this.Controls.Add(this.GbxEstado);
             this.Controls.Add(this.dgvPedido);
             this.Controls.Add(this.gbxPedido);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Cargar_Pedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agregar al pedido";
@@ -255,6 +286,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.GbxEstado.ResumeLayout(false);
             this.GbxEstado.PerformLayout();
+            this.gbxTipo.ResumeLayout(false);
+            this.gbxTipo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -277,5 +310,9 @@
         private System.Windows.Forms.GroupBox GbxEstado;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button bnModificar;
+        private System.Windows.Forms.GroupBox gbxTipo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
