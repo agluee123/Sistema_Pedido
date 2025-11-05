@@ -13,7 +13,4 @@ namespace Dominio
         public string Contrasena { get; set; }
     }
 
-
-
-
 }

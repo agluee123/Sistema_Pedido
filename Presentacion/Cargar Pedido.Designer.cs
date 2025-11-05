@@ -162,6 +162,8 @@
             // 
             // cbxArticulo
             // 
+            this.cbxArticulo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxArticulo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxArticulo.FormattingEnabled = true;
             this.cbxArticulo.Location = new System.Drawing.Point(47, 34);
             this.cbxArticulo.Name = "cbxArticulo";

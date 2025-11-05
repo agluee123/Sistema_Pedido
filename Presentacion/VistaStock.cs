@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using Negocio;
+using PdfSharp.Pdf.Filters;
 using Sistema_de_pedidos;
 
 namespace Ilgabinetto
@@ -25,6 +26,7 @@ namespace Ilgabinetto
         {
             CargarDatos();
             cargarProductos();
+            CambiarNombreColumna();
             
         }
 
@@ -320,6 +322,60 @@ namespace Ilgabinetto
             {
                 MessageBox.Show("Error al filtrar entregas: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            tbxNombre.Clear();
+            tbxStock.Clear();
+        }
+
+        private void btnLimp_Click(object sender, EventArgs e)
+        {
+            tbxEntregado.Clear();
+            tbxCantidad.Clear();
+        }
+
+        private void CambiarNombreColumna() {
+            dgvStock.Columns["id"].HeaderText = "Id";
+            dgvStock.Columns["nombre"].HeaderText = "Nombre";
+            dgvStock.Columns["cantidad"].HeaderText = "Cantidad";
+            dgvEntrega.Columns["id"].HeaderText = "Id";
+            dgvEntrega.Columns["idStock"].HeaderText = "Id Stock";
+            dgvEntrega.Columns["NombreProducto"].HeaderText = "Producto";
+            dgvEntrega.Columns["entregadoA"].HeaderText = "Nombre";
+            dgvEntrega.Columns["cantidadEntregada"].HeaderText = "Cantidad";
+            dgvEntrega.Columns["fechaEntrega"].HeaderText = "Fecha";
+        }
+
+        private void tbxFiltro_TextChanged(object sender, EventArgs e)
+        {
+            string filtro = tbxFiltro.Text.ToLower();
+
+            // Filtro para STOCK
+            var filtradoStock = lista
+                .Where(x => x.nombre.ToLower().Contains(filtro) ||
+                            x.cantidad.ToString().Contains(filtro) ||
+                            x.id.ToString().Contains(filtro))
+                .ToList();
+
+            dgvStock.DataSource = filtradoStock;
+
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            string filtro=textBox2.Text.ToLower();
+            var filtradoEntrega = lista2
+        .Where(x => x.NombreProducto.ToLower().Contains(filtro) ||
+                    x.entregadoA.ToLower().Contains(filtro) ||
+                    x.idStock.ToString().Contains(filtro) ||
+                    x.fechaEntrega.ToString("dd/MM/yyyy").Contains(filtro))
+        .ToList();
+
+            dgvEntrega.DataSource = filtradoEntrega;
+
         }
     }
 }

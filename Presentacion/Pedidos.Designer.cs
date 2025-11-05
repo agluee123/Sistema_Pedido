@@ -63,29 +63,28 @@
             // 
             // cbxCliente
             // 
+            this.cbxCliente.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxCliente.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxCliente.FormattingEnabled = true;
-            this.cbxCliente.Location = new System.Drawing.Point(175, 27);
-            this.cbxCliente.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxCliente.Location = new System.Drawing.Point(140, 22);
             this.cbxCliente.Name = "cbxCliente";
-            this.cbxCliente.Size = new System.Drawing.Size(265, 24);
+            this.cbxCliente.Size = new System.Drawing.Size(213, 21);
             this.cbxCliente.TabIndex = 2;
             // 
             // lblCliente
             // 
             this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(35, 31);
-            this.lblCliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCliente.Location = new System.Drawing.Point(28, 25);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(112, 16);
+            this.lblCliente.Size = new System.Drawing.Size(91, 13);
             this.lblCliente.TabIndex = 1;
             this.lblCliente.Text = "Seleccion cliente:";
             // 
             // BtnAgregarProducto
             // 
-            this.BtnAgregarProducto.Location = new System.Drawing.Point(27, 162);
-            this.BtnAgregarProducto.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAgregarProducto.Location = new System.Drawing.Point(22, 130);
             this.BtnAgregarProducto.Name = "BtnAgregarProducto";
-            this.BtnAgregarProducto.Size = new System.Drawing.Size(179, 28);
+            this.BtnAgregarProducto.Size = new System.Drawing.Size(143, 22);
             this.BtnAgregarProducto.TabIndex = 7;
             this.BtnAgregarProducto.Text = "Agregar Productos";
             this.BtnAgregarProducto.UseVisualStyleBackColor = true;
@@ -101,11 +100,9 @@
             this.gbxCrearPedido.Controls.Add(this.lblCliente);
             this.gbxCrearPedido.Controls.Add(this.BtnAgregarProducto);
             this.gbxCrearPedido.Controls.Add(this.cbxCliente);
-            this.gbxCrearPedido.Location = new System.Drawing.Point(32, 94);
-            this.gbxCrearPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.gbxCrearPedido.Location = new System.Drawing.Point(26, 75);
             this.gbxCrearPedido.Name = "gbxCrearPedido";
-            this.gbxCrearPedido.Padding = new System.Windows.Forms.Padding(4);
-            this.gbxCrearPedido.Size = new System.Drawing.Size(485, 207);
+            this.gbxCrearPedido.Size = new System.Drawing.Size(388, 166);
             this.gbxCrearPedido.TabIndex = 0;
             this.gbxCrearPedido.TabStop = false;
             this.gbxCrearPedido.Text = "Crear Nuevo Pedido";
@@ -113,10 +110,9 @@
             // lblTipo
             // 
             this.lblTipo.AutoSize = true;
-            this.lblTipo.Location = new System.Drawing.Point(39, 116);
-            this.lblTipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTipo.Location = new System.Drawing.Point(31, 93);
             this.lblTipo.Name = "lblTipo";
-            this.lblTipo.Size = new System.Drawing.Size(104, 16);
+            this.lblTipo.Size = new System.Drawing.Size(82, 13);
             this.lblTipo.TabIndex = 5;
             this.lblTipo.Text = "Tipo de Pedido:";
             // 
@@ -129,18 +125,16 @@
             "Viaje",
             "Semanal",
             "Transporte"});
-            this.cbxTipo.Location = new System.Drawing.Point(175, 106);
-            this.cbxTipo.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxTipo.Location = new System.Drawing.Point(140, 85);
             this.cbxTipo.Name = "cbxTipo";
-            this.cbxTipo.Size = new System.Drawing.Size(265, 24);
+            this.cbxTipo.Size = new System.Drawing.Size(213, 21);
             this.cbxTipo.TabIndex = 6;
             // 
             // btnEliminarPedido
             // 
-            this.btnEliminarPedido.Location = new System.Drawing.Point(287, 162);
-            this.btnEliminarPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEliminarPedido.Location = new System.Drawing.Point(230, 130);
             this.btnEliminarPedido.Name = "btnEliminarPedido";
-            this.btnEliminarPedido.Size = new System.Drawing.Size(179, 28);
+            this.btnEliminarPedido.Size = new System.Drawing.Size(143, 22);
             this.btnEliminarPedido.TabIndex = 7;
             this.btnEliminarPedido.Text = "Eliminar Pedido";
             this.btnEliminarPedido.UseVisualStyleBackColor = true;
@@ -149,19 +143,17 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(39, 66);
-            this.lblFecha.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFecha.Location = new System.Drawing.Point(31, 53);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(48, 16);
+            this.lblFecha.Size = new System.Drawing.Size(40, 13);
             this.lblFecha.TabIndex = 3;
             this.lblFecha.Text = "Fecha:";
             // 
             // dtpFechaPedido
             // 
-            this.dtpFechaPedido.Location = new System.Drawing.Point(175, 66);
-            this.dtpFechaPedido.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFechaPedido.Location = new System.Drawing.Point(140, 53);
             this.dtpFechaPedido.Name = "dtpFechaPedido";
-            this.dtpFechaPedido.Size = new System.Drawing.Size(265, 22);
+            this.dtpFechaPedido.Size = new System.Drawing.Size(213, 20);
             this.dtpFechaPedido.TabIndex = 4;
             // 
             // dgvListaPedidos
@@ -169,13 +161,12 @@
             this.dgvListaPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaPedidos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chkSelect});
-            this.dgvListaPedidos.Location = new System.Drawing.Point(587, 94);
-            this.dgvListaPedidos.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvListaPedidos.Location = new System.Drawing.Point(470, 75);
             this.dgvListaPedidos.Name = "dgvListaPedidos";
             this.dgvListaPedidos.ReadOnly = true;
             this.dgvListaPedidos.RowHeadersWidth = 51;
             this.dgvListaPedidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaPedidos.Size = new System.Drawing.Size(879, 638);
+            this.dgvListaPedidos.Size = new System.Drawing.Size(703, 510);
             this.dgvListaPedidos.TabIndex = 8;
             this.dgvListaPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPedidos_CellClick);
             this.dgvListaPedidos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPedidos_CellContentClick);
@@ -191,10 +182,9 @@
             // 
             // btnReg
             // 
-            this.btnReg.Location = new System.Drawing.Point(165, 704);
-            this.btnReg.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReg.Location = new System.Drawing.Point(132, 563);
             this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(179, 28);
+            this.btnReg.Size = new System.Drawing.Size(143, 22);
             this.btnReg.TabIndex = 5;
             this.btnReg.Text = "Imprimir";
             this.btnReg.UseVisualStyleBackColor = true;
@@ -202,20 +192,18 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(688, 50);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Location = new System.Drawing.Point(550, 40);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(707, 22);
+            this.textBox1.Size = new System.Drawing.Size(566, 20);
             this.textBox1.TabIndex = 6;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lblFiltro
             // 
             this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(587, 54);
-            this.lblFiltro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFiltro.Location = new System.Drawing.Point(470, 43);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(52, 16);
+            this.lblFiltro.Size = new System.Drawing.Size(43, 13);
             this.lblFiltro.TabIndex = 7;
             this.lblFiltro.Text = "Buscar:";
             // 
@@ -226,21 +214,18 @@
             this.gbxFecha.Controls.Add(this.lblDesde);
             this.gbxFecha.Controls.Add(this.dTPreg2);
             this.gbxFecha.Controls.Add(this.dTPReg1);
-            this.gbxFecha.Location = new System.Drawing.Point(32, 326);
-            this.gbxFecha.Margin = new System.Windows.Forms.Padding(4);
+            this.gbxFecha.Location = new System.Drawing.Point(26, 261);
             this.gbxFecha.Name = "gbxFecha";
-            this.gbxFecha.Padding = new System.Windows.Forms.Padding(4);
-            this.gbxFecha.Size = new System.Drawing.Size(485, 177);
+            this.gbxFecha.Size = new System.Drawing.Size(388, 142);
             this.gbxFecha.TabIndex = 1;
             this.gbxFecha.TabStop = false;
             this.gbxFecha.Text = "Buscar Por Fecha";
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(147, 138);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Location = new System.Drawing.Point(118, 110);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(183, 31);
+            this.btnBuscar.Size = new System.Drawing.Size(146, 25);
             this.btnBuscar.TabIndex = 4;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -249,37 +234,33 @@
             // lblHasta
             // 
             this.lblHasta.AutoSize = true;
-            this.lblHasta.Location = new System.Drawing.Point(24, 82);
-            this.lblHasta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHasta.Location = new System.Drawing.Point(19, 66);
             this.lblHasta.Name = "lblHasta";
-            this.lblHasta.Size = new System.Drawing.Size(46, 16);
+            this.lblHasta.Size = new System.Drawing.Size(38, 13);
             this.lblHasta.TabIndex = 3;
             this.lblHasta.Text = "Hasta:";
             // 
             // lblDesde
             // 
             this.lblDesde.AutoSize = true;
-            this.lblDesde.Location = new System.Drawing.Point(20, 28);
-            this.lblDesde.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDesde.Location = new System.Drawing.Point(16, 22);
             this.lblDesde.Name = "lblDesde";
-            this.lblDesde.Size = new System.Drawing.Size(51, 16);
+            this.lblDesde.Size = new System.Drawing.Size(41, 13);
             this.lblDesde.TabIndex = 1;
             this.lblDesde.Text = "Desde:";
             // 
             // dTPreg2
             // 
-            this.dTPreg2.Location = new System.Drawing.Point(20, 105);
-            this.dTPreg2.Margin = new System.Windows.Forms.Padding(4);
+            this.dTPreg2.Location = new System.Drawing.Point(16, 84);
             this.dTPreg2.Name = "dTPreg2";
-            this.dTPreg2.Size = new System.Drawing.Size(437, 22);
+            this.dTPreg2.Size = new System.Drawing.Size(350, 20);
             this.dTPreg2.TabIndex = 4;
             // 
             // dTPReg1
             // 
-            this.dTPReg1.Location = new System.Drawing.Point(20, 49);
-            this.dTPReg1.Margin = new System.Windows.Forms.Padding(4);
+            this.dTPReg1.Location = new System.Drawing.Point(16, 39);
             this.dTPReg1.Name = "dTPReg1";
-            this.dTPReg1.Size = new System.Drawing.Size(437, 22);
+            this.dTPReg1.Size = new System.Drawing.Size(350, 20);
             this.dTPReg1.TabIndex = 2;
             // 
             // groupBox1
@@ -287,21 +268,18 @@
             this.groupBox1.Controls.Add(this.btnBuscarEst);
             this.groupBox1.Controls.Add(this.cbxSelEstado);
             this.groupBox1.Controls.Add(this.cbxSelTipo);
-            this.groupBox1.Location = new System.Drawing.Point(32, 528);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(26, 422);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(485, 107);
+            this.groupBox1.Size = new System.Drawing.Size(388, 86);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar Por Estado";
             // 
             // btnBuscarEst
             // 
-            this.btnBuscarEst.Location = new System.Drawing.Point(147, 71);
-            this.btnBuscarEst.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscarEst.Location = new System.Drawing.Point(118, 57);
             this.btnBuscarEst.Name = "btnBuscarEst";
-            this.btnBuscarEst.Size = new System.Drawing.Size(183, 28);
+            this.btnBuscarEst.Size = new System.Drawing.Size(146, 22);
             this.btnBuscarEst.TabIndex = 2;
             this.btnBuscarEst.Text = "Buscar";
             this.btnBuscarEst.UseVisualStyleBackColor = true;
@@ -314,10 +292,9 @@
             this.cbxSelEstado.Items.AddRange(new object[] {
             "Pendiente",
             "Entregado"});
-            this.cbxSelEstado.Location = new System.Drawing.Point(280, 38);
-            this.cbxSelEstado.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxSelEstado.Location = new System.Drawing.Point(224, 30);
             this.cbxSelEstado.Name = "cbxSelEstado";
-            this.cbxSelEstado.Size = new System.Drawing.Size(160, 24);
+            this.cbxSelEstado.Size = new System.Drawing.Size(129, 21);
             this.cbxSelEstado.TabIndex = 1;
             // 
             // cbxSelTipo
@@ -328,18 +305,16 @@
             "Semanal",
             "Viaje",
             "Transporte"});
-            this.cbxSelTipo.Location = new System.Drawing.Point(32, 38);
-            this.cbxSelTipo.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxSelTipo.Location = new System.Drawing.Point(26, 30);
             this.cbxSelTipo.Name = "cbxSelTipo";
-            this.cbxSelTipo.Size = new System.Drawing.Size(160, 24);
+            this.cbxSelTipo.Size = new System.Drawing.Size(129, 21);
             this.cbxSelTipo.TabIndex = 0;
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(32, 655);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLimpiar.Location = new System.Drawing.Point(26, 524);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(179, 28);
+            this.btnLimpiar.Size = new System.Drawing.Size(143, 22);
             this.btnLimpiar.TabIndex = 3;
             this.btnLimpiar.Text = "Limpiar Busqueda";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -347,10 +322,9 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(338, 655);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnActualizar.Location = new System.Drawing.Point(270, 524);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(179, 28);
+            this.btnActualizar.Size = new System.Drawing.Size(143, 22);
             this.btnActualizar.TabIndex = 4;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
@@ -358,10 +332,10 @@
             // 
             // Pedidos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1532, 780);
+            this.ClientSize = new System.Drawing.Size(1226, 624);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox1);
@@ -373,7 +347,6 @@
             this.Controls.Add(this.gbxCrearPedido);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Pedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Crear Pedido";
